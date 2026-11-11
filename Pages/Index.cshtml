@@ -1,10 +1,16 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>My Tasks</h1>
+
+<form method="post" asp-page-handler="Add">
+    <input asp-for="NewTitle" placeholder="What do you need to do?" />
+    <button type="submit">Add Task</button>
+</form>
+
+<ul>
+    @foreach (var task in Model.Tasks)
+    {
+        <li>@task.Title</li>
+    }
+</ul>
