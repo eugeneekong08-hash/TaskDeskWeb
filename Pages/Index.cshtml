@@ -22,6 +22,10 @@
             <form method="post" asp-page-handler="Toggle" asp-route-id="@task.Id">
                 <button type="submit">@(task.IsDone ? "Undo" : "Done")</button>
             </form>
+
+            <form method="post" asp-page-handler="Delete" asp-route-id="@task.Id">
+                <button type="submit">Delete</button>
+            </form>
         </li>
     }
 </ul>

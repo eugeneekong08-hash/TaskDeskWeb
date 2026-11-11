@@ -49,4 +49,18 @@ public class IndexModel : PageModel
 
         return RedirectToPage();
     }
+
+    public async Task<IActionResult> OnPostDeleteAsync(int id)
+    {
+        var task = await _db.Tasks.FindAsync(id);
+
+        if (task != null)
+        {
+            _db.Tasks.Remove(task);
+            await _db.SaveChangesAsync();
+        }
+
+        return RedirectToPage();
+    }
 }
+
