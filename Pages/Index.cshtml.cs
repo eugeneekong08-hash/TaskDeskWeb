@@ -37,4 +37,16 @@ public class IndexModel : PageModel
 
         return RedirectToPage();
     }
+    public async Task<IActionResult> OnPostToggleAsync(int id)
+    {
+        var task = await _db.Tasks.FindAsync(id);
+
+        if (task != null)
+        {
+            task.IsDone = !task.IsDone;
+            await _db.SaveChangesAsync();
+        }
+
+        return RedirectToPage();
+    }
 }
