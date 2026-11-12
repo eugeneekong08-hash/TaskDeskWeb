@@ -1,0 +1,11 @@
+@page
+@model EditModel
+
+<h1>Edit Task</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <input asp-for="Title" />
+    <button type="submit">Save</button>
+    <a asp-page="Index">Cancel</a>
+</form>

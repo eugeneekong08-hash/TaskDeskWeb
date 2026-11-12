@@ -19,6 +19,8 @@
                 <strong>(Done)</strong>
             }
 
+            <a asp-page="Edit" asp-route-id="@task.Id">Edit</a>
+
             <form method="post" asp-page-handler="Toggle" asp-route-id="@task.Id">
                 <button type="submit">@(task.IsDone ? "Undo" : "Done")</button>
             </form>
@@ -27,5 +29,6 @@
                 <button type="submit">Delete</button>
             </form>
         </li>
+
     }
 </ul>
