@@ -1,11 +1,13 @@
 @page
 @model EditModel
 
-<h1>Edit Task</h1>
+<div class="app-card">
+    <h1 class="app-title">Edit Task</h1>
 
-<form method="post">
-    <input type="hidden" asp-for="Id" />
-    <input asp-for="Title" />
-    <button type="submit">Save</button>
-    <a asp-page="Index">Cancel</a>
-</form>
+    <form method="post" class="add-form">
+        <input type="hidden" asp-for="Id" />
+        <input asp-for="Title" class="add-input" />
+        <button type="submit" class="pill pill-add">Save</button>
+        <a asp-page="Index" class="pill pill-edit">Cancel</a>
+    </form>
+</div>
