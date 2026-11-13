@@ -1,32 +1,38 @@
 ﻿@page
 @model IndexModel
 
-<h1>My Tasks</h1>
 
-<form method="post" asp-page-handler="Add">
-    <input asp-for="NewTitle" placeholder="What do you need to do?" />
-    <button type="submit">Add Task</button>
-</form>
+<div class="app-card">
+    <h1 class="app-title">My Tasks</h1>
 
-<ul>
-    @foreach (var task in Model.Tasks)
-    {
-        <li>
-            @task.Title
+    <form method="post" asp-page-handler="Add" class="add-form">
+        <input asp-for="NewTitle" placeholder="What do you need to do?" class="add-input" />
+        <button type="submit" class="pill pill-add">Add Task</button>
+    </form>
 
-            @if (task.IsDone)
-            {
-                <strong>(Done)</strong>
-            }
+    <ul class="task-list">
+        @foreach (var task in Model.Tasks)
+        {
+            <li class="task-row @(task.IsDone ? "is-done" : "")">
+                <span class="task-title">@task.Title</span>
 
-            <a asp-page="Edit" asp-route-id="@task.Id">Edit</a> <!-- NEW LINE -->
+                @if (task.IsDone)
+                {
+                    <strong class="done-label">(Done)</strong>
+                }
 
-            <form method="post" asp-page-handler="Toggle" asp-route-id="@task.Id">
-                <button type="submit">@(task.IsDone ? "Undo" : "Done")</button>
-            </form>
+                <div class="task-actions">
+                    <a asp-page="Edit" asp-route-id="@task.Id" class="pill pill-edit">Edit</a>
 
-            <form method="post" asp-page-handler="Delete" asp-route-id="@task.Id">
-                <button type="submit">Delete</button>
-            </form>
-        </li>
-    }
+                    <form method="post" asp-page-handler="Toggle" asp-route-id="@task.Id">
+                        <button type="submit" class="pill pill-toggle">@(task.IsDone ? "Undo" : "Done")</button>
+                    </form>
+
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@task.Id">
+                        <button type="submit" class="pill pill-delete">Delete</button>
+                    </form>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
